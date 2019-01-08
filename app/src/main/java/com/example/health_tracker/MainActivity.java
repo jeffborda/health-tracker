@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         int delay = 0; // Delay in milliseconds
         int period = 10; // Period in milliseconds
+
+
         final TimerTask task = new TimerTask() {
             @Override
             public void run() {
