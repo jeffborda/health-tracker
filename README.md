@@ -10,7 +10,7 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 
 ### Screenshot
 
-<img src="./assets/screenshot_1.jpg"
+<img src="/assets/screenshot_1.jpg"
      alt="White Board Picture"
      style="float: left; margin-right: 10px; width: 200px;" />
 
