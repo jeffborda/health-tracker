@@ -8,6 +8,12 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 * A stopwatch was added to the main view, with start, stop, and reset buttons.  The stopwatch starts at 0:00:00.000 and goes up to 0:00:00.000.
 * Image carousel was added which display different exercise-themed images.
 
+### Screenshot
+
+<img src="../assets/screenshot_1.jpg"
+     alt="White Board Picture"
+     style="float: left; margin-right: 10px; width: 200px;" />
+
 
 
 ## Credits
