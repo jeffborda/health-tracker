@@ -3,7 +3,11 @@ package com.example.health_tracker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -15,8 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
     public int counter = 0;
     public long startTime = 0;
-    public long milisPassed = 0;
-    public boolean cancelRun = false;
+    public boolean isRunning = false;
+    TimerTask task;
+
+    // Image Carousel
+    CarouselView carouselView;
+
+    int[] sampleImages = {R.drawable.exercise1, R.drawable.exercise2, R.drawable.exercise3};
+
 
 
     @Override
@@ -24,9 +34,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Image Carousel
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+        carouselView.setImageListener(imageListener);
     }
 
-    // Note: Left off at trying to stop the stopwatch, and reset it.  Made variable cancelRun to try and accomplish this.
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
     public void onFingerExerciserButtonClick(View v) {
         TextView textView1 = findViewById(R.id.finger_exercise_text);
@@ -42,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStopwatchStart(View v) {
-        cancelRun = false;
+        if(isRunning) {
+            return;
+        }
+        isRunning = true;
         Timer stopwatch = new Timer();
         startTime = System.currentTimeMillis();
 
@@ -50,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         int period = 10; // Period in milliseconds
 
 
-        final TimerTask task = new TimerTask() {
+        task = new TimerTask() {
             @Override
             public void run() {
                 TextView textView = findViewById(R.id.stopwatch_text);
@@ -58,18 +80,38 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         stopwatch.scheduleAtFixedRate(task, delay, period);
-//        if(cancelRun) {
-//            task.cancel();
-//        }
+
     }
 
     public void onStopwatchStop(View v) {
-        cancelRun = true;
+        isRunning = false;
+        task.cancel();
     }
 
     public void onStopwatchReset(View v) {
+        if(isRunning) {
+            task.cancel();
+        }
         TextView textView = findViewById(R.id.stopwatch_text);
         textView.setText("0:00:00.000");
+
+        if(isRunning) {
+            Timer stopwatch = new Timer();
+            startTime = System.currentTimeMillis();
+
+            int delay = 0; // Delay in milliseconds
+            int period = 10; // Period in milliseconds
+
+
+            task = new TimerTask() {
+                @Override
+                public void run() {
+                    TextView textView = findViewById(R.id.stopwatch_text);
+                    textView.setText(setStopwatch());
+                }
+            };
+            stopwatch.scheduleAtFixedRate(task, delay, period);
+        }
     }
 
     public String setStopwatch() {
