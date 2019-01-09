@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public int counter = 0;
     public long startTime = 0;
+    public long nowMilis;
     public boolean isRunning = false;
     TimerTask task;
 
