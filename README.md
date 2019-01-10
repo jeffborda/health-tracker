@@ -25,7 +25,11 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 
 ### Screenshots
 
-![screenshot 2](./assets/screenshot_2.png "Main Page") ![screenshot 3](./assets/screenshot_3.png "Stopwatch Page")![screenshot 3](./assets/screenshot_3.png "Finger Exerciser Page")
+<p float="left">
+  <img src="./assets/screenshot_2.png" width="150" />
+  <img src="./assets/screenshot_3.png" width="150" /> 
+  <img src="./assets/screenshot_3.png" width="150" />
+</p>
 
 
 
