@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Adding the parentActivityName provides a back button -->
+        <activity android:name=".FingerExercise" android:parentActivityName=".MainActivity" />
+        <activity android:name=".StopWatch" android:parentActivityName=".MainActivity"></activity>
+
+
     </application>
 
 </manifest>

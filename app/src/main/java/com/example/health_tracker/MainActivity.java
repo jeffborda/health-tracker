@@ -1,5 +1,9 @@
 package com.example.health_tracker;
 
+import android.app.Notification;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,17 +21,14 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int counter = 0;
-    public long startTime = 0;
-    public long nowMilis;
-    public boolean isRunning = false;
-    TimerTask task;
+
 
     // Image Carousel
     CarouselView carouselView;
-
     int[] sampleImages = {R.drawable.exercise1, R.drawable.exercise2, R.drawable.exercise3};
 
+    // For notification setting
+    private static final String CHANNEL_ID = "channelId";
 
 
     @Override
@@ -48,82 +49,30 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void onFingerExerciserButtonClick(View v) {
-        TextView textView1 = findViewById(R.id.finger_exercise_text);
-        TextView textView2 = findViewById(R.id.encourage_text);
-        counter++;
-        if(counter % 50 == 0) {
-            textView2.setText("Oh my, you're amazing!!!");
-        }
-        else if(counter % 10 == 0) {
-            textView2.setText("Keep going, I believe in you!!");
-        }
-        textView1.setText("Ooooh yeah! You have " + counter + " presses.");
+    public void goToFingerExercise(View v) {
+        Intent fingerExerciseIntent = new Intent(this, FingerExercise.class);
+        // Next line show how you can pass a string (or something else) over to the next view
+        //fingerExerciseIntent.putExtra("stringToShow", "You're at finger exercises.");
+        startActivity(fingerExerciseIntent);
     }
 
-    public void onStopwatchStart(View v) {
-        if(isRunning) {
-            return;
-        }
-        isRunning = true;
-        Timer stopwatch = new Timer();
-        startTime = System.currentTimeMillis();
-
-        int delay = 0; // Delay in milliseconds
-        int period = 10; // Period in milliseconds
-
-
-        task = new TimerTask() {
-            @Override
-            public void run() {
-                TextView textView = findViewById(R.id.stopwatch_text);
-                textView.setText(setStopwatch());
-            }
-        };
-        stopwatch.scheduleAtFixedRate(task, delay, period);
-
+    public void goToStopwatch(View v) {
+        Intent stopwatchIntent = new Intent(this, StopWatch.class);
+        startActivity(stopwatchIntent);
     }
 
-    public void onStopwatchStop(View v) {
-        isRunning = false;
-        task.cancel();
+    public void sendNotification(View v) {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.notification_icon)
+                        .setContentTitle("Drink Water")
+                        .setContentText("Reminder to drink water. At least 4 cups per hour while exercising your fingers.")
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText("WHAT IS IS TEXT FOR??????"))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        notificationManager.notify(1, builder.build());
     }
-
-    public void onStopwatchReset(View v) {
-        if(isRunning) {
-            task.cancel();
-        }
-        TextView textView = findViewById(R.id.stopwatch_text);
-        textView.setText("0:00:00.000");
-
-        if(isRunning) {
-            Timer stopwatch = new Timer();
-            startTime = System.currentTimeMillis();
-
-            int delay = 0; // Delay in milliseconds
-            int period = 10; // Period in milliseconds
-
-
-            task = new TimerTask() {
-                @Override
-                public void run() {
-                    TextView textView = findViewById(R.id.stopwatch_text);
-                    textView.setText(setStopwatch());
-                }
-            };
-            stopwatch.scheduleAtFixedRate(task, delay, period);
-        }
-    }
-
-    public String setStopwatch() {
-        long nowMilis = System.currentTimeMillis();
-        long diff = nowMilis - startTime - (16*60*60*1000); // Time zone adjust
-        Date date = new Date(diff);
-        SimpleDateFormat timeFormat = new SimpleDateFormat("H:mm:ss.SSS");
-        return timeFormat.format(date);
-    }
-
-
-
 
 }
