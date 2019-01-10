@@ -1,5 +1,6 @@
 package com.example.health_tracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public long startTime = 0;
-    public long nowMilis;
     public boolean isRunning = false;
     TimerTask task;
     // Image Carousel
@@ -46,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void onFingerExerciseClick() {
-
+    public void goToFingerExercise(View v) {
+        Intent fingerExerciseIntent = new Intent(this, FingerExercise.class);
+        // Next line show how you can pass a string (or something else) over to the next view
+        //fingerExerciseIntent.putExtra("stringToShow", "You're at finger exercises.");
+        startActivity(fingerExerciseIntent);
     }
 
     public void onStopwatchStart(View v) {

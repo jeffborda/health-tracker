@@ -1,5 +1,6 @@
 package com.example.health_tracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,20 +14,33 @@ public class FingerExercise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finger_exercise);
+        // Following is how you would get the extra
+//        TextView textView = findViewById(R.layout.stringToShow);
+//        Intent i = getIntent();
+//        textView.setText(i.getExtra("stringToShow"));
     }
 
 
     public void onFingerExerciserButtonClick(View v) {
-        TextView textView1 = findViewById(R.id.finger_exercise_text);
-        TextView textView2 = findViewById(R.id.encourage_text);
+        TextView tapCountText = findViewById(R.id.finger_exercise_text);
+        TextView encouragementText = findViewById(R.id.encourage_text);
+        String displayCount;
         counter++;
+        // Set the encouragement text based on click counter
         if(counter % 50 == 0) {
-            textView2.setText("Oh my, you're amazing!!!");
+            encouragementText.setText(R.string.finger_exercise_encouragement_2);
         }
         else if(counter % 10 == 0) {
-            textView2.setText("Keep going, I believe in you!!");
+            encouragementText.setText(R.string.finger_exercise_encouragement1);
         }
-        textView1.setText("Ooooh yeah! You have " + counter + " presses.");
+        // Set click counter, and pluralize 'click' if more than one click
+        if(counter < 2) {
+            displayCount = getString(R.string.finger_exercise_tap_count_singular, counter);
+        }
+        else {
+            displayCount = getString(R.string.finger_exercise_tap_count_plural, counter);
+        }
+        tapCountText.setText(displayCount);
     }
 
 }

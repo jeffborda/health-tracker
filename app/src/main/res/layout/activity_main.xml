@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onStopwatchStart"
-            android:text="Start"
+            android:text="@string/timer_button_start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,7 +31,7 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:onClick="onStopwatchReset"
-            android:text="Reset"
+            android:text="@string/timer_button_reset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/stop_button"
             app:layout_constraintStart_toEndOf="@+id/start_button" />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onStopwatchStop"
-            android:text="Stop"
+            android:text="@string/timer_button_stop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -79,7 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:text="Finger Exercise"
+        android:onClick="goToFingerExercise"
+        android:text="@string/finger_exercise_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

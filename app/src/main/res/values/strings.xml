@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">health-tracker</string>
+
+    <!-- Main Activity -->
+    <string name="timer_button_start">Start</string>
+    <string name="timer_button_stop">Stop</string>
+    <string name="timer_button_reset">Reset</string>
+
+    <string name="finger_exercise_button">Finger Exercise</string>
+
+
+    <!-- Finger Exercise Activity -->
+    <string name="finger_exercise_description">Exercise your finger by tapping the button.</string>
+    <string name="finger_exercise_encouragement1">Keep going, I believe in you!!</string>
+    <string name="finger_exercise_encouragement_2">Oh my, you are amazing!!!</string>
+    <string name="finger_exercise_tap_count_singular">Great work! You have %1$d click!</string>
+    <string name="finger_exercise_tap_count_plural">Great work! You have %1$d clicks!</string>
+
 </resources>
