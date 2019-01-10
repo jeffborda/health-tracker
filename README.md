@@ -14,6 +14,7 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
      width=150;  margin-right= 10px;/>
 
 
+
 ## Lab 27 Features
 * Separated the Stopwatch and Finger Exercises onto different pages.
 * Added buttons to the main activity to access the pages.
