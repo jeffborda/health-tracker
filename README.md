@@ -28,7 +28,7 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 <p float="left">
   <img src="./assets/screenshot_2.png" width="150" />
   <img src="./assets/screenshot_3.png" width="150" /> 
-  <img src="./assets/screenshot_3.png" width="150" />
+  <img src="./assets/screenshot_4.png" width="150" />
 </p>
 
 
