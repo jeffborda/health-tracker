@@ -5,8 +5,8 @@
     <string name="timer_button_start">Start</string>
     <string name="timer_button_stop">Stop</string>
     <string name="timer_button_reset">Reset</string>
-
     <string name="finger_exercise_button">Finger Exercise</string>
+    <string name="stopwatch_button">Stopwatch</string>
 
 
     <!-- Finger Exercise Activity -->
