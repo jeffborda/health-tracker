@@ -17,15 +17,13 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int counter = 0;
+
     public long startTime = 0;
     public long nowMilis;
     public boolean isRunning = false;
     TimerTask task;
-
     // Image Carousel
     CarouselView carouselView;
-
     int[] sampleImages = {R.drawable.exercise1, R.drawable.exercise2, R.drawable.exercise3};
 
 
@@ -48,17 +46,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void onFingerExerciserButtonClick(View v) {
-        TextView textView1 = findViewById(R.id.finger_exercise_text);
-        TextView textView2 = findViewById(R.id.encourage_text);
-        counter++;
-        if(counter % 50 == 0) {
-            textView2.setText("Oh my, you're amazing!!!");
-        }
-        else if(counter % 10 == 0) {
-            textView2.setText("Keep going, I believe in you!!");
-        }
-        textView1.setText("Ooooh yeah! You have " + counter + " presses.");
+    public void onFingerExerciseClick() {
+
     }
 
     public void onStopwatchStart(View v) {
