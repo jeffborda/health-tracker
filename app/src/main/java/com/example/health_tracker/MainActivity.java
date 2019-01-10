@@ -1,6 +1,9 @@
 package com.example.health_tracker;
 
+import android.app.Notification;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     CarouselView carouselView;
     int[] sampleImages = {R.drawable.exercise1, R.drawable.exercise2, R.drawable.exercise3};
 
+    // For notification setting
+    private static final String CHANNEL_ID = "channelId";
 
 
     @Override
@@ -56,7 +61,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(stopwatchIntent);
     }
 
+    public void sendNotification(View v) {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.notification_icon)
+                        .setContentTitle("Drink Water")
+                        .setContentText("Reminder to drink water. At least 4 cups per hour while exercising your fingers.")
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText("WHAT IS IS TEXT FOR??????"))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-
+        notificationManager.notify(1, builder.build());
+    }
 
 }

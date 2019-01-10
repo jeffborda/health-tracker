@@ -8,6 +8,10 @@
     <string name="finger_exercise_button">Finger Exercise</string>
     <string name="stopwatch_button">Stopwatch</string>
 
+    <!-- Notification Settings -->
+    <string name="notification_title">Drink Water</string>
+    <string name="notification_body">Drink two cups of water, every 10 minutes while exercising your finger.</string>
+
 
     <!-- Finger Exercise Activity -->
     <string name="finger_exercise_description">Exercise your finger by tapping the button.</string>
