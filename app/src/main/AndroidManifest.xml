@@ -18,10 +18,17 @@
         </activity>
 
         <!-- Adding the parentActivityName provides a back button -->
-        <activity android:name=".FingerExercise" android:parentActivityName=".MainActivity" />
-        <activity android:name=".StopWatch" android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".FingerExercise"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StopWatch"
+            android:parentActivityName=".MainActivity" />
 
-
+        <receiver
+            android:name=".NotificationReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
