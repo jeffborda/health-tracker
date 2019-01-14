@@ -1,21 +1,23 @@
 package com.example.health_tracker;
 
-import android.app.Notification;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     int[] sampleImages = {R.drawable.exercise1, R.drawable.exercise2, R.drawable.exercise3};
 
     // For notification setting
-    private static final String CHANNEL_ID = "channelId";
+    private static int notificationId = 1;
+    private static int NOTIFICATION_INTERVAL = 1000 * 60 * 60 * 2; // 2 hours
 
 
     @Override
@@ -61,18 +64,45 @@ public class MainActivity extends AppCompatActivity {
         startActivity(stopwatchIntent);
     }
 
+    // From lecture: Day 28 Part 1
     public void sendNotification(View v) {
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.notification_icon)
-                        .setContentTitle("Drink Water")
-                        .setContentText("Reminder to drink water. At least 4 cups per hour while exercising your fingers.")
-                        .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText("WHAT IS IS TEXT FOR??????"))
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-        notificationManager.notify(1, builder.build());
+        // From Android docs: https://developer.android.com/training/notify-user/channels#java
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(getString(R.string.channel_name), name, importance);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                NotificationCompat.Builder builder =
+                        new NotificationCompat.Builder(MainActivity.this, getString(R.string.channel_name))
+                                .setSmallIcon(R.drawable.notification_icon)
+                                .setContentTitle("Health Tracker")
+                                .setContentText("Reminder to drink water. At least 4 cups per hour while exercising your fingers.")
+                                .setStyle(new NotificationCompat.BigTextStyle()
+                                        .bigText("Time to Drink Water"))
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
+                notificationManager.notify(notificationId++, builder.build());
+            }
+        }, NOTIFICATION_INTERVAL, NOTIFICATION_INTERVAL);
+
+//
+//        Intent intent = new Intent(this, NotificationReceiver.class);
+//        intent.putExtra("notification", builder.build());
+//        intent.putExtra("notification_id", notificationId++);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//        // Schedule pending intent for the future
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + NOTIFICATION_INTERVAL, pendingIntent);
     }
+
 
 }
