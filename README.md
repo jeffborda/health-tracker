@@ -33,6 +33,17 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 </p>
 
 
+## Lab 28 Features
+* 
+
+### Screenshots
+
+<p float="left">
+  <img src="./assets/screenshot_x.png" width="150" />
+  <img src="./assets/screenshot_x.png" width="150" /> 
+  <img src="./assets/screenshot_x.png" width="150" />
+  <img src="./assets/screenshot_x.png" width="150" />
+</p>
 
 
 ## Credits

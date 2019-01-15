@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void goToExerciseDiary(View v) {
+        Intent exerciseDiaryIntent = new Intent(this, ExerciseDiary.class);
+        startActivity(exerciseDiaryIntent);
+    }
+
     public void goToFingerExercise(View v) {
         Intent fingerExerciseIntent = new Intent(this, FingerExercise.class);
         // Next line show how you can pass a string (or something else) over to the next view
@@ -92,16 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 notificationManager.notify(notificationId++, builder.build());
             }
         }, NOTIFICATION_INTERVAL, NOTIFICATION_INTERVAL);
-
-//
-//        Intent intent = new Intent(this, NotificationReceiver.class);
-//        intent.putExtra("notification", builder.build());
-//        intent.putExtra("notification_id", notificationId++);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//        // Schedule pending intent for the future
-//        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + NOTIFICATION_INTERVAL, pendingIntent);
     }
 
 
