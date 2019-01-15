@@ -18,15 +18,14 @@ public class ExerciseDiary extends AppCompatActivity {
 
 
         exerciseDatabase = Room.databaseBuilder(getApplicationContext(), ExerciseDatabase.class, DATABASE_NAME)
-//                .allowMainThreadQueries()
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
 
-        // Exercise(String title, int quantity, String description, String timestamp)
-//        if(exerciseDB.exerciseDao().getAll().isEmpty()) {
-//            Exercise exercise = new Exercise("Test Exercise", 100, "Insert into database push-ups", "10:00 am ...");
-//            exerciseDB.exerciseDao().insertExercise(exercise);
-//        }
+        if(exerciseDatabase.exerciseDao().getAll().isEmpty()) {
+            Exercise exercise = new Exercise("Test Exercise", 100, "Insert into database push-ups");
+            exerciseDatabase.exerciseDao().insertExercise(exercise);
+        }
 
 
     }

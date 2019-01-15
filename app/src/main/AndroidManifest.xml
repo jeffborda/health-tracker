@@ -30,7 +30,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ExerciseDiary"></activity>
+        <activity android:name=".ExerciseDiary"
             android:parentActivityName=".MainActivity" />
     </application>
 
