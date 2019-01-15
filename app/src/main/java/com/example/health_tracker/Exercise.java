@@ -13,7 +13,7 @@ public class Exercise {
     public String title;
     public int quantity;
     public String description;
-    public Date timestamp;
+    public String timestamp;
 
     // Default Constructor
     public Exercise() {}
@@ -22,6 +22,6 @@ public class Exercise {
         this.title = title;
         this.quantity = quantity;
         this.description = description;
-        this.timestamp = new Date();
+        this.timestamp = new Date().toString();
     }
 }

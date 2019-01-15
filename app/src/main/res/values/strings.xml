@@ -24,4 +24,9 @@
     <string name="finger_exercise_tap_count_singular">Great work! You have %1$d click!</string>
     <string name="finger_exercise_tap_count_plural">Great work! You have %1$d clicks!</string>
 
+    <!-- Exercise Diary -->
+    <string name="exercise_diary_title_input">Exercise Name</string>
+    <string name="exercise_diary_description_input">Description</string>
+    <string name="exercise_diary_quantity_input">Quantity</string>
+
 </resources>

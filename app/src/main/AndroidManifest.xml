@@ -31,6 +31,7 @@
             android:exported="true" />
 
         <activity android:name=".ExerciseDiary"></activity>
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

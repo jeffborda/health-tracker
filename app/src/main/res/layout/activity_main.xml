@@ -11,7 +11,7 @@
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="24dp"
         app:fillColor="#FFFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:pageColor="#00000000"
@@ -22,8 +22,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="351dp"
-        android:layout_height="351dp"
+        android:layout_width="193dp"
+        android:layout_height="203dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="139dp"
+            android:layout_width="191dp"
             android:layout_height="wrap_content"
             android:onClick="goToStopwatch"
             android:text="@string/stopwatch_button"
@@ -41,7 +41,7 @@
 
         <Button
             android:id="@+id/finger_exercise_button"
-            android:layout_width="wrap_content"
+            android:layout_width="191dp"
             android:layout_height="wrap_content"
             android:onClick="goToFingerExercise"
             android:text="@string/finger_exercise_button"
@@ -50,9 +50,8 @@
 
         <Button
             android:id="@+id/exercise_diary_button"
-            android:layout_width="142dp"
-            android:layout_height="104dp"
-            android:layout_weight="1"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
             android:onClick="goToExerciseDiary"
             android:text="@string/exercise_button" />
 
