@@ -11,7 +11,7 @@
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="64dp"
         app:fillColor="#FFFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:pageColor="#00000000"
@@ -22,17 +22,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="193dp"
+        android:layout_width="194dp"
         android:layout_height="203dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/button"
-            android:layout_width="191dp"
+            android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:onClick="goToStopwatch"
             android:text="@string/stopwatch_button"
@@ -41,7 +42,7 @@
 
         <Button
             android:id="@+id/finger_exercise_button"
-            android:layout_width="191dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:onClick="goToFingerExercise"
             android:text="@string/finger_exercise_button"
@@ -65,8 +66,6 @@
             tools:layout_editor_absoluteY="266dp" />
 
     </LinearLayout>
-
-
 
 
 </android.support.constraint.ConstraintLayout>
