@@ -52,3 +52,4 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 * Video on TimerTask used to help develop the stopwatch: https://www.youtube.com/watch?v=36jbBSQd3eU
 * More information about TimerTask utilized from: https://www.tutorialspoint.com/java/util/timer_scheduleatfixedrate.htm
 * Setting up Alarm Manager: https://gist.github.com/BrandonSmith/6679223
+* Setting up RecyclerView: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
