@@ -1,7 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:padding="6dip" >
+    android:layout_height="?android:attr/listPreferredItemHeightLarge"
+    android:padding="0dip"
+    android:layout_marginBottom="10dip"
+
+
+    >
 
 
 
@@ -11,7 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:maxLines="1"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="5dip"/>
 
     <TextView
         android:id="@+id/exercise_quantity_output"
@@ -19,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/exercise_timestamp_output"
         android:maxLines="1"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/exercise_description_output"
@@ -27,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/exercise_quantity_output"
         android:maxLines="1"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/exercise_title_output"
@@ -36,7 +44,10 @@
         android:layout_above="@id/exercise_description_output"
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
 
 
 
