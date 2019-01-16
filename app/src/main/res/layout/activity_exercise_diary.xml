@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/exercise_diary_intro_text"
         android:layout_width="237dp"
-        android:layout_height="131dp"
+        android:layout_height="54dp"
         android:layout_marginTop="32dp"
         android:text="@string/exercise_diary_intro_text"
         android:textAlignment="center"
@@ -53,19 +53,38 @@
         android:ems="10"
         android:hint="@string/exercise_diary_quantity_input"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/add_exercise_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/add_exercise_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:onClick="onExerciseSubmit"
         android:text="@string/exercise_diary_submit_button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/my_recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <!-- A RecyclerView with some commonly used attributes -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

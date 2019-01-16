@@ -11,14 +11,14 @@ public class Exercise {
     public long id;
 
     public String title;
-    public int quantity;
+    public String quantity;
     public String description;
     public String timestamp;
 
     // Default Constructor
     public Exercise() {}
 
-    public Exercise(String title, int quantity, String description) {
+    public Exercise(String title, String quantity, String description) {
         this.title = title;
         this.quantity = quantity;
         this.description = description;
