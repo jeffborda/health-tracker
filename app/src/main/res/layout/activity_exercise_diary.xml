@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ExerciseDiary">
 
 
@@ -25,13 +26,15 @@
         android:id="@+id/exercise_diary_title_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/exercise_diary_title_input"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/exercise_diary_description_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_diary_intro_text" />
 
     <EditText
         android:id="@+id/exercise_diary_description_input"
@@ -41,6 +44,7 @@
         android:ems="10"
         android:hint="@string/exercise_diary_description_input"
         android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@id/exercise_diary_title_input"
         app:layout_constraintBottom_toTopOf="@+id/exercise_diary_quantity_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -49,14 +53,15 @@
         android:id="@+id/exercise_diary_quantity_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/exercise_diary_quantity_input"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/add_exercise_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercise_diary_description_input"
+        app:layout_constraintBottom_toTopOf="@+id/add_exercise_button"
+        />
 
     <Button
         android:id="@+id/add_exercise_button"
@@ -65,26 +70,37 @@
         android:layout_marginBottom="8dp"
         android:onClick="onExerciseSubmit"
         android:text="@string/exercise_diary_submit_button"
-        app:layout_constraintBottom_toTopOf="@+id/my_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_diary_quantity_input"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
-
-    <!-- A RecyclerView with some commonly used attributes -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:scrollbars="vertical"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/exercise_diary_button">
 
 
+        <!-- A RecyclerView with some commonly used attributes -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0"
 
+            />
+
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

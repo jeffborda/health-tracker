@@ -61,7 +61,7 @@ public class ExerciseDiaryAdapter extends RecyclerView.Adapter<ExerciseDiaryAdap
         // - replace the contents of the view with that element
         holder.title.setText(exercises.get(position).title);
         holder.description.setText(exercises.get(position).description);
-            holder.quantity.setText(exercises.get(position).quantity);
+        holder.quantity.setText(exercises.get(position).quantity);
         holder.timestamp.setText(exercises.get(position).timestamp);
     }
 

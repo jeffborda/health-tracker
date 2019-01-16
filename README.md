@@ -34,15 +34,15 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 
 
 ## Lab 28 Features
-* 
+* Added Android Room Database.
+* Adding new Exercise Diary entries to the database.
+* Displaying Exercise Diary Entries with RecyclerView (Needs further styling).
+
 
 ### Screenshots
 
 <p float="left">
-  <img src="./assets/screenshot_x.png" width="150" />
-  <img src="./assets/screenshot_x.png" width="150" /> 
-  <img src="./assets/screenshot_x.png" width="150" />
-  <img src="./assets/screenshot_x.png" width="150" />
+  <img src="./assets/screenshot_6.png" width="150" />
 </p>
 
 
