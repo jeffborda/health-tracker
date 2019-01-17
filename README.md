@@ -46,6 +46,15 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 </p>
 
 
+## Lab 33
+
+* Created a backend using a Java Spring App that contains an Exercise database.
+* Backend deployed to Heroku, and has POST and GET routes at: https://healthtrackerbackend.herokuapp.com/exercise
+* Android app now displaying the deployed database and the local database with GET route.
+* Android app now making POST requests to deployed database from the "Add Exercise" form.
+
+
+
 ## Credits
 
 * Image carousel sourced from: https://github.com/sayyam/carouselview
@@ -53,3 +62,5 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 * More information about TimerTask utilized from: https://www.tutorialspoint.com/java/util/timer_scheduleatfixedrate.htm
 * Setting up Alarm Manager: https://gist.github.com/BrandonSmith/6679223
 * Setting up RecyclerView: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
+* Setting up POST Request with Android Volley: http://www.itsalif.info/content/android-volley-tutorial-http-get-post-put
+* Parsing Gson into a list: https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455

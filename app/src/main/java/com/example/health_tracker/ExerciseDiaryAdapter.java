@@ -40,6 +40,7 @@ public class ExerciseDiaryAdapter extends RecyclerView.Adapter<ExerciseDiaryAdap
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ExerciseDiaryAdapter(List<Exercise> myDataset) {
+
         exercises = myDataset;
     }
 
