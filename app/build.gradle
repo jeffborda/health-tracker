@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+// For Google Play:
+apply plugin: 'com.google.android.gms.oss-licenses-plugin'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -66,4 +69,8 @@ dependencies {
 
     // Google Gson
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    // For Google Play
+    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }

@@ -56,7 +56,7 @@ public class StopWatch extends AppCompatActivity {
             task.cancel();
         }
         TextView textView = findViewById(R.id.stopwatch_text);
-        textView.setText("0:00:00.000");
+        textView.setText(R.string.timer_zeroed_out_display);
 
         if(isRunning) {
             Timer stopwatch = new Timer();

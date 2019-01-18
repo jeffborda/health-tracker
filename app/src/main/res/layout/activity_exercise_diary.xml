@@ -8,19 +8,7 @@
     tools:context=".ExerciseDiary">
 
 
-    <TextView
-        android:id="@+id/exercise_diary_intro_text"
-        android:layout_width="237dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/exercise_diary_intro_text"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/exercise_diary_title_input"
@@ -34,7 +22,9 @@
         app:layout_constraintBottom_toTopOf="@+id/exercise_diary_description_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exercise_diary_intro_text" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/exercise_diary_description_input"
@@ -47,7 +37,8 @@
         app:layout_constraintTop_toBottomOf="@id/exercise_diary_title_input"
         app:layout_constraintBottom_toTopOf="@+id/exercise_diary_quantity_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/exercise_diary_quantity_input"
@@ -61,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercise_diary_description_input"
         app:layout_constraintBottom_toTopOf="@+id/add_exercise_button"
-        />
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/add_exercise_button"
