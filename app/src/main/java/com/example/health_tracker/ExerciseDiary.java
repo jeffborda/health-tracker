@@ -1,6 +1,11 @@
 package com.example.health_tracker;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,23 +34,28 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+// Location Services - RE: https://developer.android.com/training/location/retrieve-current#java
 
 public class ExerciseDiary extends AppCompatActivity {
 
-    // For Database
+    // For Local Room Database
     private static final String DATABASE_NAME = "exercise-database";
     private ExerciseDatabase exerciseDatabase;
     // For RecyclerView
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    // List to hold local db and server db exercises
     private List<Exercise> exercises;
+    // Location
+    private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_diary);
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getLocation();
         getFromDataBase();
 
     }
@@ -54,16 +67,12 @@ public class ExerciseDiary extends AppCompatActivity {
         String exerciseQuantity = ((EditText)findViewById(R.id.exercise_diary_quantity_input)).getText().toString();
         // Create a new exercise
         Exercise newExercise = new Exercise(exerciseTitle, exerciseQuantity, exerciseDescription);
-        // Store the exercise in the database
+        // Store the exercise in the local database
         exerciseDatabase.exerciseDao().insertExercise(newExercise);
-
-
+        // Store exercise in the Heroku database
         postExercise(exerciseTitle, exerciseQuantity, exerciseDescription);
 
-
-
-
-        // To refresh database
+        // Refresh the RecyclerView
         finish();
         startActivity(getIntent());
     }
@@ -71,8 +80,7 @@ public class ExerciseDiary extends AppCompatActivity {
 
     // RE: Android Documentation https://developer.android.com/training/volley/simple
     public void getFromDataBase() {
-
-// Instantiate the RequestQueue.
+// Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://healthtrackerbackend.herokuapp.com/exercise";
 
@@ -105,7 +113,6 @@ public class ExerciseDiary extends AppCompatActivity {
 
     public void renderRecycler() {
 
-
         exerciseDatabase = Room.databaseBuilder(getApplicationContext(), ExerciseDatabase.class, DATABASE_NAME)
                 .allowMainThreadQueries()
 //                .fallbackToDestructiveMigration()
@@ -113,8 +120,6 @@ public class ExerciseDiary extends AppCompatActivity {
 
         // Adds the data from the local database to exercises list
         exercises.addAll(exerciseDatabase.exerciseDao().getAll());
-
-
 
         //Reference: https://developer.android.com/guide/topics/ui/layout/recyclerview#java
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
@@ -146,7 +151,7 @@ public class ExerciseDiary extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // error
+                        // TODO: Save in the DB with the fact that it didn't POST (create a new field)
                         Log.e("Error.Response", error.toString());
                     }
                 }
@@ -157,12 +162,41 @@ public class ExerciseDiary extends AppCompatActivity {
                 params.put("title", exerciseTitle);
                 params.put("quantity", exerciseQuantity);
                 params.put("description", exerciseDescription);
-
                 return params;
             }
         };
         queue.add(postRequest);
     }
+
+
+
+    public void getLocation() {
+
+        // If permission granted we can do all this stuff like get location
+        if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.WRITE_CALENDAR)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+        }
+
+
+
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                        }
+                    }
+                });
+
+    }
+
+
+
+
+
 
 
 }

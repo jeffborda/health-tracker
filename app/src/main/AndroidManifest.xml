@@ -3,7 +3,11 @@
     package="com.example.health_tracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- Line 10: For trying to fix keyboard from pushing layout up.  RE: https://stackoverflow.com/questions/5516216/how-to-avoid-soft-keyboard-pushing-up-my-layout -->
     <application
+        android:windowSoftInputMode="adjustPan"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

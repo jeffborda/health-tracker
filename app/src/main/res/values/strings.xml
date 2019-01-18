@@ -2,19 +2,15 @@
     <string name="app_name">health-tracker</string>
 
     <!-- Main Activity -->
+    <string name="channel_name">health_tracker_01</string>
+    <string name="stopwatch_button">Stopwatch</string>
+    <string name="exercise_button">Exercise Diary</string>
+
+    <!-- Stop Watch -->
+    <string name="timer_zeroed_out_display">0:00:00.000</string>
     <string name="timer_button_start">Start</string>
     <string name="timer_button_stop">Stop</string>
     <string name="timer_button_reset">Reset</string>
-    <string name="exercise_button">Exercise Diary</string>
-
-    <string name="stopwatch_button">Stopwatch</string>
-    <string name="channel_name">health_tracker_01</string>
-
-
-    <!-- Notification Settings -->
-    <string name="notification_title">Drink Water</string>
-    <string name="notification_body">Drink two cups of water, every 10 minutes while exercising your finger.</string>
-
 
     <!-- Finger ExerciseDatabase Activity -->
     <string name="finger_exercise_button">Finger Exercise</string>
