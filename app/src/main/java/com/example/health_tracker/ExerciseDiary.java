@@ -4,11 +4,7 @@ import android.Manifest;
 import android.arch.persistence.room.Room;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,13 +20,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.api.Api;
-import com.google.android.gms.common.api.GoogleApiActivity;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -38,14 +27,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 // Location Services - RE: https://developer.android.com/training/location/retrieve-current#java
 
@@ -79,7 +65,8 @@ public class ExerciseDiary extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_diary);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getFromDataBase();
-        getLocation();
+        getPermissions();
+
 
     }
 
@@ -98,6 +85,8 @@ public class ExerciseDiary extends AppCompatActivity {
         // Refresh the RecyclerView
         finish();
         startActivity(getIntent());
+
+
     }
 
 
@@ -193,7 +182,7 @@ public class ExerciseDiary extends AppCompatActivity {
 
 
 
-    public void getLocation() {
+    public void getPermissions() {
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
@@ -217,25 +206,28 @@ public class ExerciseDiary extends AppCompatActivity {
             }
         } else {
             // Permission has already been granted
-                mFusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
 
 
-                                // Got last known location. In some rare situations this can be null.
-                                if (location != null) {
-                                    // Logic to handle location object
-
-                                    System.out.println("LOCATION~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-                                    System.out.println(location.getLatitude());
-                                    System.out.println(location.getLongitude());
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
 
 
-                                }
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+
+                                System.out.println("LOCATION~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+                                System.out.println(location.getLatitude());
+                                System.out.println(location.getLongitude());
+
+
                             }
-                        });
+                        }
+                    });
+
         }
 
 
@@ -262,8 +254,6 @@ public class ExerciseDiary extends AppCompatActivity {
             // permissions this app might request.
         }
     }
-
-
 
 
 
