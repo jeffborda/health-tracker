@@ -45,6 +45,9 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
   <img src="./assets/screenshot_6-1.png" width="150" />
 </p>
 
+## Lab 29 Features
+* Added testing using Espresso.
+
 
 ## Lab 33
 
@@ -65,3 +68,4 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 * Setting up RecyclerView: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
 * Setting up POST Request with Android Volley: http://www.itsalif.info/content/android-volley-tutorial-http-get-post-put
 * Parsing Gson into a list: https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455
+* Testing buttons with Espresso: https://stackoverflow.com/questions/32906881/checking-if-a-button-is-clickable-in-espresso-test-android-studio

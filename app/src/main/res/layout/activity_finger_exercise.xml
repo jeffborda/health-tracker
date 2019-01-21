@@ -33,7 +33,7 @@
         android:id="@+id/finger_exercise_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="50dp"
         android:onClick="onFingerExerciserButtonClick"
         android:text="@string/finger_exercise_button"
         app:layout_constraintBottom_toBottomOf="parent"
