@@ -1,7 +1,7 @@
 package com.example.health_tracker;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 // Reference: https://medium.freecodecamp.org/room-sqlite-beginner-tutorial-2e725e47bfab
 
