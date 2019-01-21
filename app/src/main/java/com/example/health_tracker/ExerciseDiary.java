@@ -1,15 +1,15 @@
 package com.example.health_tracker;
 
 import android.Manifest;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -48,12 +48,7 @@ public class ExerciseDiary extends AppCompatActivity {
     private List<Exercise> exercises;
     // Location
     private FusedLocationProviderClient mFusedLocationClient;
-
-    // See video tutorial: https://www.youtube.com/watch?v=gEcFf2Mv4L0&feature=youtu.be
     private Location lastLocation;
-    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private LocationRequest locationRequest;
-    // int for permissions results request
     private static final int ALL_PERMISSIONS_RESULT = 1011;
 
 
@@ -63,9 +58,10 @@ public class ExerciseDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_diary);
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getLocation();
         getFromDataBase();
-        getPermissions();
 
 
     }
@@ -181,18 +177,35 @@ public class ExerciseDiary extends AppCompatActivity {
     }
 
 
-
-    public void getPermissions() {
+    // RE: Android Documentation
+    public void getLocation() {
 
         // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)  != PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                System.out.println("LOCATION~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                System.out.println(location.getLatitude());
+                                System.out.println(location.getLongitude());
+                            }
+                            else {
+                                //TODO: What to do when location is unknown
+                            }
+                        }
+                    });
+
 
             // Permission is not granted
             // Should we show an explanation? NO!!!! IT'S A TRAP!!!!!
+        } else {
+            // Permission has already been granted
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_CONTACTS)) {
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
@@ -204,30 +217,6 @@ public class ExerciseDiary extends AppCompatActivity {
                 // app-defined int constant. The callback method gets the
                 // result of the request.
             }
-        } else {
-            // Permission has already been granted
-
-
-            mFusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-
-
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                // Logic to handle location object
-
-                                System.out.println("LOCATION~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-                                System.out.println(location.getLatitude());
-                                System.out.println(location.getLongitude());
-
-
-                            }
-                        }
-                    });
-
         }
 
 
@@ -241,11 +230,13 @@ public class ExerciseDiary extends AppCompatActivity {
             case ALL_PERMISSIONS_RESULT: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     // permission was granted, yay! Do the task you need to do.
-                    System.out.println("I AM HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    System.out.println("Got HERE");
+                    getLocation();
                 } else {
                     // permission denied, boo! Disable the functionality that depends on this permission.
+                    // TODO: Add code to handle what to do if permission not given to use location
+                    System.out.println("CANNOT GET PERMISSIONS TO GET LOCATION");
                 }
                 return;
             }
