@@ -50,6 +50,7 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 
 * Created a backend using a Java Spring App that contains an Exercise database.
 * Backend deployed to Heroku, and has POST and GET routes at: https://healthtrackerbackend.herokuapp.com/exercise
+* Backend on GitHub: https://github.com/jeffborda/health-tracker-backend
 * Android app now displaying the deployed database and the local database with GET route.
 * Android app now making POST requests to deployed database from the "Add Exercise" form.
 
