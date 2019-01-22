@@ -1,5 +1,6 @@
 package com.example.health_tracker;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -8,6 +9,7 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
@@ -22,6 +24,7 @@ import static org.hamcrest.core.IsNot.not;
 @LargeTest
 public class FingerExerciseActivityTests {
 
+    @Rule
     public ActivityTestRule<FingerExercise> activityRule = new ActivityTestRule<>(FingerExercise.class);
 
     // Finger Exercise Button Tests
@@ -60,6 +63,19 @@ public class FingerExerciseActivityTests {
     @Test
     public void fingerExerciseActivityInitialText() {
         onView(withId(R.id.finger_exercise_text)).check(matches(withText(R.string.finger_exercise_description)));
+    }
+
+    @Test
+    public void fingerExerciseEncouragementTextChanges() {
+        for(int i = 1; i < 75; i++) {
+            onView(withId(R.id.finger_exercise_button)).perform(click());
+            if(i >= 50 && i < 60) {
+                onView(withId(R.id.encourage_text)).check(matches(withText(R.string.finger_exercise_encouragement_2)));
+            }
+            else if(i >= 10 || i >= 60) {
+                onView(withId(R.id.encourage_text)).check(matches(withText(R.string.finger_exercise_encouragement1)));
+            }
+        }
     }
 
 

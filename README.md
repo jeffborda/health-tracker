@@ -47,6 +47,7 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 
 ## Lab 29 Features
 * Added testing using Espresso.
+* Testing: Main Activity, Stopwatch, Finger Exercise, and Exercise Diary.
 
 
 ## Lab 33
