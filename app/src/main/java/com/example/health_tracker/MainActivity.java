@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void goToLogin(View v) {
+        Intent exerciseDiaryIntent = new Intent(this, Login.class);
+        startActivity(exerciseDiaryIntent);
+    }
+
     public void goToExerciseDiary(View v) {
         Intent exerciseDiaryIntent = new Intent(this, ExerciseDiary.class);
         startActivity(exerciseDiaryIntent);
