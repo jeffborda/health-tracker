@@ -7,6 +7,12 @@
     <string name="stopwatch_button">Stopwatch</string>
     <string name="exercise_button">Exercise Diary</string>
     <string name="water_notification_button">Send Water Reminders</string>
+    <string name="login_button">Login</string>
+    <string name="preference_file_key">com.example.health_tracker.PREFERENCE_FILE_KEY</string>
+
+    <!-- Login Activity -->
+    <string name="login_username">Enter username</string>
+    <string name="enter_username_button">Submit</string>
 
     <!-- Stop Watch -->
     <string name="timer_zeroed_out_display">0:00:00.000</string>

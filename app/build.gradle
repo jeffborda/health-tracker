@@ -48,7 +48,6 @@ dependencies {
     // For Notification
     implementation 'androidx.core:core:1.1.0-alpha03'
 
-
     // ~~~~~~~~ ROOM DATABASE DEPENDENCIES ~~~~~~~~~~~~~~~
     def room_version = "1.1.1"
 
@@ -61,14 +60,11 @@ dependencies {
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation 'androidx.room:room-guava:2.1.0-alpha03'
 
-
 //    // https://mvnrepository.com/artifact/com.google.guava/listenablefuture
 //    implementation group: 'com.google.guava', name: 'listenablefuture', version: '1.0'
 //
 //    // https://mvnrepository.com/artifact/androidx.concurrent/concurrent-futures
 //    implementation group: 'androidx.concurrent', name: 'concurrent-futures', version: '1.0.0-alpha03'
-
-
 
     // Test helpers
     testImplementation 'androidx.room:room-testing:2.1.0-alpha03'
