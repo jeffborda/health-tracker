@@ -45,11 +45,16 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
   <img src="./assets/screenshot_6-1.png" width="150" />
 </p>
 
+## Lab 29 Features
+* Added testing using Espresso.
+* Testing: Main Activity, Stopwatch, Finger Exercise, and Exercise Diary.
+
 
 ## Lab 33
 
 * Created a backend using a Java Spring App that contains an Exercise database.
 * Backend deployed to Heroku, and has POST and GET routes at: https://healthtrackerbackend.herokuapp.com/exercise
+* Backend on GitHub: https://github.com/jeffborda/health-tracker-backend
 * Android app now displaying the deployed database and the local database with GET route.
 * Android app now making POST requests to deployed database from the "Add Exercise" form.
 
@@ -64,3 +69,4 @@ The Health Tracker is the first Android app that I am developing.  It emulates a
 * Setting up RecyclerView: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
 * Setting up POST Request with Android Volley: http://www.itsalif.info/content/android-volley-tutorial-http-get-post-put
 * Parsing Gson into a list: https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455
+* Testing buttons with Espresso: https://stackoverflow.com/questions/32906881/checking-if-a-button-is-clickable-in-espresso-test-android-studio
